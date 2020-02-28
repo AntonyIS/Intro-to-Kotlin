@@ -1,0 +1,188 @@
+Kotlin
+1.Kotlin is more concise:
+    solve problems with fewer lines of code.This improves code maintainability and readability,
+    meaning engineers can write, read, and change code more effectively and efficiently.
+2.Kotlin code is safer:
+    Kotlin code is inherently safer than Java code because it prevents common programming mistakes by design,
+    resulting in fewer system failures and application crashes.
+3.Kotlin speeds up every-day development tasks
+    Kotlin offers a myriad of handy features that facilitate every-day development tasks–something Java does not offer.
+    These include default parameter values, object declarations, extension functions, and many more.
+5. Kotlin helps reduce errors and bugs in the code
+
+The Kotlin compiler aims to fail-fast whenever possible.
+    This greatly facilitates searching for bugs and can even prevent
+    them in the first place.The Kotlin compiler performs many checks, avoiding runtime errors and reducing the cost and
+    effort of error fixes.
+
+Kotlin Variables
+    A variable refers to a memory location that stores some data. It has a name and an associated type. The type of a
+    variable defines the range of values that the variable can hold, and the operations that can be done on those values.
+
+    You can declare a variable in Kotlin using var and val keywords.
+    var:
+        For defining a mutable variable, i.e. a variable whose value can be changed, use the var keyword
+        var country = "Kenya"
+        country = "Ug"
+    val:
+        A variable declared using val keyword is immutable (read-only). It cannot be reassigned after it is initialized
+        val name = "John Doe"
+        name = "Mary Doe"// this will throw an error
+
+    Type inference
+        Although Kotlin is a statically typed language(you need to declare type),It doesn’t require you to explicitly
+        specify the type of every variable you declare. It can infer the type of a variable from the initializer expression
+
+        Implicitly defining the type of variable
+            val greetings_one = "Hello world" // type inferred as `String`
+            val age= 23 // type inferred as `Int`
+
+        Exmplicitly defining the type of variable
+            val greetings_two:String = "Hello again" // type inferred as `String`
+            val age:Int = 23 // type inferred as `Int`
+
+
+        Note that the type declaration becomes mandatory if you’re not initializing the variable at the time of declaration
+            var language // Error: The variable must either have a Type annotation or be initialized
+            language = "Kotlin"
+
+            solution
+            var language:String//Success: Works
+            language = "Kotlin"
+
+
+Data Types:
+    Data Types are used to categorize a set of related values and define the operations that can be done on them.
+    Just like other languages, Kotlin has predefined types like Int, Double Boolean, Char etc.
+    In Kotlin, everything (even the basic types like Int and Boolean) is an object. More specifically, everything behaves
+    like an Object.
+
+    1. Numbers
+        Numeric types in Kotlin are similar to Java. They can be categorized into integer and floating point types.
+        Integers:
+            Byte - 8 bit
+            Short- 16 bit
+            Int - 32 bit
+            Long - 64 bit
+        Floating Point Numbers:
+            Float - 32 bit single-precision floating point value.
+            Double - 64 bit double-precision floating point value.
+
+        Examples
+            val myByte:Byte = 10
+            val myShort:Short = 125
+
+            val myInt:Int = 100
+            val myLong:Long = 1000L //The suffix 'L' is used to specify a long value
+
+
+            val myFloat = 126.78f   // The suffix 'f' or 'F' represents a Float
+            val myDouble = 325.49
+
+            You can also use underscore in numeric values to make them more readable
+            val hundredThousand = 100_000
+            val oneMillion = 1_000_000
+
+    2.Booleans
+        The type Boolean is used to represent logical values. It can have two possible values true and false.
+        val myBoolean = true
+        val anotherBoolean = false
+
+    3.Characters
+        Characters are represented using the type Char. Unlike Java, Char types cannot be treated as numbers.
+        They are declared using single quotes like this
+            val letterChar = 'A'
+            val digitChar = '9'
+
+    4.Strings
+        Strings are represented using the String class. They are immutable, that means you cannot modify a String by
+        changing some of its elements.
+        You can declare a String like this
+            var myStr = "Hello, Kotlin"
+
+        You can access the character at a particular index in a String using str[index]. The index starts from zero -
+            var name = "John"
+            var firstCharInName = name[0]  // 'J'
+            var lastCharInName = name[name.length - 1]  // 'n'
+            The length property is used to get the length of a String.
+
+        Escaped String and Raw String
+        Strings declared in double quotes can have escaped characters like ‘\n’ (new line), ‘\t’ (tab) etc
+        var myEscapedString = "Hello Reader,\nWelcome to my Blog"
+
+        String templates:
+        val country = "Kenya"
+        println("I came from {$name.length} to ")
+
+
+        Operations
+        val firstname:String = "John"
+        val lastname:String = "Doe"
+        var age = 18
+
+        String Concatenation
+        println("My name are "+ firstname + " and " + lastname)
+
+        String Interpolation
+        Kotlin has an amazing feature called String Interpolation. This feature allows you to directly insert a
+        template expression inside a String. Template expressions are tiny pieces of code that are evaluated and their
+        results are concatenated with the original String.
+
+        print("I am $firstname $lastname and I will be ${age + 10} years old in 10 years")
+
+    5.Arrays
+        Arrays in Kotlin are represented using the Array class. You can create an array in Kotlin either using the library
+        function arrayOf() or using the Array() constructor.
+
+        Creating Arrays using the arrayOf library function
+            You can pass a bunch of values to the arrayOf function to create an array like this
+            var numbers = arrayOf(1, 2, 3, 4, 5)
+            var animals = arrayOf("Cat", "Dog", "Lion", "Tiger")
+
+        Note that you can also pass values of mixed types to the arrayOf() function, and it will still work (but don’t do that)
+            var mixedArray = arrayOf(1, true, 3, "Hello", 'A')	// Works and creates an array of Objects
+
+        You can also enforce a particular type while creating the array like this
+            var numArray = arrayOf<Int>(1, 2, 3, 4, "Hello")  // Compiler Error
+
+        Accessing the elements of an array by their index
+            You can access the element at a particular index in an array using array[index]. The index starts from zero
+                val myDoubleArray = arrayOf(4.0, 6.9, 1.7, 12.3, 5.4)
+                val firstElement = myDoubleArray[0]
+                val lastElement = myDoubleArray[myDoubleArray.size - 1]
+                Every array has a size property that you can use to get the size of the array.
+        Modifying array elements
+            You can also modify the array element at an index like this
+                val a = arrayOf(4, 5, 7)  // [4, 5, 7]
+                a[1] = 10		          // [4, 10, 7]
+
+        Primitive Arrays
+            As we learned earlier, everything in Kotlin is an object. But to improve performance it represents some of the
+            basic types like numbers, characters and booleans as primitive types at runtime.
+            The arrayOf() function creates arrays of boxed/wrapper types. That is, arrayOf(1, 2, 3) corresponds to Java’s
+            Integer[] array.
+            But, Kotlin provides a way to create arrays of primitive types as well. It contains specialized classes for
+            representing array of primitive types. Those classes are - IntArray, DoubleArray, CharArray etc. You can create
+            an array of primitive types using the corresponding library functions - intArrayOf(), doubleArrayOf(), charArrayOf() etc.
+
+            val myCharArray = charArrayOf('K', 'O', 'T')  // CharArray (corresponds to Java 'char[]')
+            val myIntArray = intArrayOf(1, 3, 5, 7)		// IntArray (corresponds to Java 'int[]')
+
+Operators:
+    Just like other languages, Kotlin provides various operators to perform computations on numbers -
+    Arithmetic operators (+, -, *, /, %)
+    Comparison operators (==, !=, <, >, <=, >=)
+    Assignment operators (+=, -=, *=, /=, %=)
+    Increment & Decrement operators (++, --)
+
+
+
+
+
+
+
+
+
+
+
+
